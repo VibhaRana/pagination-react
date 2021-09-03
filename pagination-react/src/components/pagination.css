@@ -1,0 +1,14 @@
+
+
+.pagination{
+    display: flex;
+   
+    align-items: center;
+    justify-content: space-around;
+}
+
+.page-link{
+    background-color: #ffa500;
+    color: white;
+    border: none;
+}

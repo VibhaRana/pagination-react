@@ -9,6 +9,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(10);
+  const[page, setPage] = useState(1)
 
    useEffect(() => {
      const fetchPosts = async () => {
@@ -21,6 +22,10 @@ const App = () => {
      fetchPosts();
    }, []);
 
+   const handleClick = num => {
+    setPage(num);
+  }
+
   // Get current posts
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -31,12 +36,14 @@ const App = () => {
 
   return (
     <div className='container mt-5'>
-      <h1 className='text-primary mb-3'>My Blog</h1>
+      <h1 className='text-primary mb-3'>Surface Mine Pagination Demo</h1>
+      <h4>Page {page}</h4>
       <Posts posts={currentPosts} loading={loading} />
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={posts.length}
         paginate={paginate}
+        handleClick={handleClick} 
       />
     </div>
   );
